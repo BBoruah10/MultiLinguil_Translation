@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Virtual environment
+env/
+venv/
+ENV/
+*.egg-info/
+.Python
+.pip-wheel-metadata/
+pip-wheel-metadata/
+build/
+dist/
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Model files
+**/my_en_hi_model/
+**/my_en_bn_model/
+*.pt
+*.bin
+*.h5
+
+# Sample data
+**/sample_data/
+*.csv
+*.json
+
+# Log files
+*.log
+
+# PyCache in nested directories
+**/__pycache__/
+
+# Secrets or credentials (if any)
+.env
+*.venv
+
+# Colab hidden files (if any)
+.config/
+Collab EN to BN/
+Collab EN to HI/

@@ -1,0 +1,36 @@
+.translator {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.translator textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1rem;
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.translator select,
+.translator button {
+  margin-top: 15px;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+}
+
+.translator button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.translator button:hover {
+  background-color: #0056b3;
+}

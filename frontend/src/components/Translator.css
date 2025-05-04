@@ -1,0 +1,98 @@
+/* General Container */
+.translator-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Textarea Styling */
+.input-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 120px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.input-textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Language Select Dropdown */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.language-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.language-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Button Styling */
+.translate-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.translate-button:hover {
+  background-color: #0056b3;
+}
+
+/* Output Section */
+.output-box {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.output-text {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Allows for multi-line output */
+}

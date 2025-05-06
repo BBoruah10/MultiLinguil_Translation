@@ -17,14 +17,21 @@ def translate():
         return jsonify({"error": "Request body is missing or not in JSON format."}), 400
 
     text = data.get("text", "").strip()
-    language = data.get("language", "").strip()
+    source_lang = data.get("source_lang", "").strip()
+    target_lang = data.get("target_lang", "").strip()
 
-    if not text or not language:
-        return jsonify({"error": "Text and language must be provided."}), 400
+    if not text or not source_lang or not target_lang:
+        return jsonify({"error": "Text, source language, and target language must be provided."}), 400
 
     try:
-        translated_text = translate_text(text, language)
+        # Construct the language pair string (e.g., "English to Hindi")
+        language_pair = f"{source_lang} to {target_lang}"
+        
+        # Translate text
+        translated_text = translate_text(text, source_lang, target_lang)
+        
         return jsonify({"translation": translated_text})
+    
     except ValueError as e:
         logging.error(f"ValueError: {str(e)}")
         return jsonify({"error": str(e)}), 400

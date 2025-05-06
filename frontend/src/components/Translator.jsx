@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Translator.css";
 
 const Translator = () => {
-  const [inputText, setInputText] = useState(""); // <-- Fix: Define inputText
+  const [inputText, setInputText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
-  const [language, setLanguage] = useState("Hindi"); // <-- Add language state
+  const [inputLanguage, setInputLanguage] = useState("English");
+  const [outputLanguage, setOutputLanguage] = useState("Hindi");
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.body.className = isDarkMode ? "dark-mode" : "light-mode";
+  }, [isDarkMode]);
 
   const handleTranslate = async () => {
     if (!inputText.trim()) return;
@@ -15,7 +21,11 @@ const Translator = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: inputText, language: language }), // <-- Include language in the request
+        body: JSON.stringify({
+          text: inputText,
+          source_lang: inputLanguage,
+          target_lang: outputLanguage,
+        }),
       });
 
       const data = await response.json();
@@ -31,38 +41,89 @@ const Translator = () => {
     }
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="translator-container">
-      <h1 className="header">Multilingual Translator</h1>
-      <textarea
-        rows="5"
-        className="input-textarea"
-        placeholder="Enter English text"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)} // <-- Bind inputText
-      ></textarea>
+    <div className="translator-page">
+      <div className="translator-container">
+        {/* Sidebar */}
+        <div className="sidebar">
+          <h1 className="sidebar-title">🌍 MULTILINGUAL TRANSLATION</h1>
+        </div>
 
-      <div className="form-group">
-        <label htmlFor="language-select">Select Language</label>
-        <select
-          id="language-select"
-          className="language-select"
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)} // <-- Add language selection
-        >
-          <option value="Hindi">Hindi</option>
-          <option value="Bengali">Bengali</option>
-        </select>
+        {/* Main Content */}
+        <div className="main-content">
+          {/* Toggle Button */}
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            title="Toggle Theme"
+          >
+            {isDarkMode ? "☀️" : "🌙"}
+          </button>
+
+          <h2 className="header" style={{ marginTop: "0", paddingTop: "10px" }}>
+            Instant Translation
+          </h2>
+
+          <textarea
+            rows="5"
+            className="input-textarea"
+            placeholder="Enter text"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          ></textarea>
+
+          <div className="form-group">
+            <label htmlFor="input-language-select">Input Language:</label>
+            <select
+              id="input-language-select"
+              className="language-select"
+              value={inputLanguage}
+              onChange={(e) => setInputLanguage(e.target.value)}
+            >
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Bengali">Bengali</option>
+              <option value="Marathi">Marathi</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="output-language-select">Output Language:</label>
+            <select
+              id="output-language-select"
+              className="language-select"
+              value={outputLanguage}
+              onChange={(e) => setOutputLanguage(e.target.value)}
+            >
+              <option value="Hindi">Hindi</option>
+              <option value="Bengali">Bengali</option>
+              <option value="Marathi">Marathi</option>
+              <option value="English">English</option>
+            </select>
+          </div>
+
+          <button className="translate-button" onClick={handleTranslate}>
+            🔄 Translate
+          </button>
+
+          <div className="output-box">
+            <h2>Translated Text:</h2>
+            <p className="output-text">{translatedText}</p>
+          </div>
+        </div>
       </div>
 
-      <button className="translate-button" onClick={handleTranslate}>
-        Translate
-      </button>
-
-      <div className="output-box">
-        <h2>Translated Text:</h2>
-        <p className="output-text">{translatedText}</p>
-      </div>
+      {/* Sticky-like footer */}
+      <footer className="app-footer">
+        <p>
+          © {new Date().getFullYear()} Multilingual Translator. All rights
+          reserved.
+        </p>
+      </footer>
     </div>
   );
 };

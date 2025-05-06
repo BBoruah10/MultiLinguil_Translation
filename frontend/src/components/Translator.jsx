@@ -50,7 +50,11 @@ const Translator = () => {
       <div className="translator-container">
         {/* Sidebar */}
         <div className="sidebar">
-          <h1 className="sidebar-title">🌍 MULTILINGUAL TRANSLATION</h1>
+          <div className="sidebar-title-container">
+            <h1 className="sidebar-title">🌍 MULTILINGUAL TRANSLATION</h1>
+            <hr className="sidebar-divider" />
+            <h2 className="sidebar-subtitle">भाषा अनुवाद</h2>
+          </div>
         </div>
 
         {/* Main Content */}
@@ -65,7 +69,7 @@ const Translator = () => {
           </button>
 
           <h2 className="header" style={{ marginTop: "0", paddingTop: "10px" }}>
-            Instant Translation
+            Language Translation
           </h2>
 
           <textarea
